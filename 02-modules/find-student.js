@@ -16,14 +16,22 @@ let studentId = process.argv[2]
 
 // console.log(studentName)
 
-function findStudentById(student){
-    return studentId == studentId
+// function findStudentById(student){
+//     return studentId == studentId
+// }
+
+function findStudentById(studentId){
+    return function(student){
+        return studentId == student.id
+    }
 }
 
 // const studentFound = students.find(student => student.id == studentId)
 // let studentName = studentFound ? studentFound.name : 'Student not found'
 
-const studentFound = students.find(findStudentById)
+const callback = findStudentById(studentId)
+const student = students.find(callback)
+// const student = students.find(findStudentById(studentId))
 let output = student ? student.name : 'Student not found'
 
 console.log(output)
