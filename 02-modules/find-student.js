@@ -1,6 +1,5 @@
 const students = require('./students.json')
 
-
 let studentId = process.argv[2]
 // let studentName = 'Student not found'
 
@@ -21,17 +20,21 @@ let studentId = process.argv[2]
 // }
 
 function findStudentById(studentId){
+    // console.log('Student ID: '+ studentId) //1x
     return function(student){
+        // console.count('Time it was called') //nx
+        // console.log ('received id: '+ student.id)
         return studentId == student.id
+        
     }
 }
 
 // const studentFound = students.find(student => student.id == studentId)
 // let studentName = studentFound ? studentFound.name : 'Student not found'
 
-const callback = findStudentById(studentId)
-const student = students.find(callback)
-// const student = students.find(findStudentById(studentId))
+//  const callback = findStudentById(studentId)
+// const student = students.find(callback)
+const student = students.find(findStudentById(studentId))
 let output = student ? student.name : 'Student not found'
 
 console.log(output)
